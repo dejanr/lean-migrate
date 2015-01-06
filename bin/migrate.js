@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var migrate = require('../library/migrate')
+var migrate = require('../lib/migrate')
   , join = require('path').join
   , fs = require('fs')
-  , log = require('../config/logger')()
+  , log = require('xnpmlog').createLogger('migrate')
   , args = process.argv.slice(2)
   , options = {args: []}
   , cwd
-  , db = require('../library/db')
+  , db = require('../lib/db')
 
 /**
  * Usage information.
@@ -187,7 +187,7 @@ function performMigration(direction, migrationName) {
   migrate('migrations')
   migrations().forEach(function(path) {
     var mod = require(process.cwd() + '/' + path)
-    migrate(path, mod.up, mod.down)
+    migrate(path, mod.before, mod.up, mod.down, mod.after)
   })
 
   var list = migrate()
@@ -219,4 +219,5 @@ db.once('connected', function() {
   command = commands[command]
   command.apply(this, options.args)
 })
+
 db.connect()
