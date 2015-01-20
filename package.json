@@ -1,10 +1,10 @@
 {
-  "name": "@gaw/migrate",
+  "name": "migrate",
   "version": "1.0.0",
   "description": "Simple tool for migrating mysql schema.",
   "main": "bin/migrate.js",
   "bin": {
-    "@gaw/migrate": "./bin/migrate.js"
+    "migrate": "./bin/migrate.js"
   },
   "directories": {
     "test": "test"
