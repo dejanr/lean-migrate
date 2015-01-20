@@ -187,6 +187,8 @@ function performMigration(direction, migrationName) {
   migrate('migrations')
   migrations().forEach(function(path) {
     var mod = require(process.cwd() + '/' + path)
+    mod.before = mod.before || function(next) { next() }
+    mod.after = mod.after || function(next) { next() }
     migrate(path, mod.before, mod.up, mod.down, mod.after)
   })
 
