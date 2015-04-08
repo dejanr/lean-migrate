@@ -6,9 +6,23 @@ migrate is a simple tool for migrating mysql schema.
 
 ## Installation
 
-    $ npm install @gaw/migrate
+    $ npm install lean-migrate
 
 ## Usage
+
+lean-migrate is using dotenv, so by installing lean-migrate all you have to do is create dotenv
+file and you could create task inside your package.json for running migrations. to customize LOGLEVEL
+just pass different verbosity level. All migrate operations would use dotenv file for database connection.
+
+```
+  {
+    "name": "project-x",
+    "scripts": {
+      "migrate": "LOGLEVEL=silly NODE_ENV=test migrate && LOGLEVEL=silly NODE_ENV=development migrate",
+      ...
+```
+
+Additionally you could specify different envirionments for development, staging, test, and production.
 
 ```
 Usage: migrate [options] [command]
@@ -85,6 +99,26 @@ This will run up-migrations upto (and including) `1316027433425-coolest-pet.js`.
     down : migrations/1316027432575-add-owners.js
     down : migrations/1316027432512-add-jane.js
     migration : complete
+
+## Before and after hooks
+
+If we need to do something before or cleanup after migration, we could use
+before and after hooks to hook into migration execution flow.
+
+```
+  exports.before = function(done) {
+    ...
+  }
+  exports.up = function(next) {
+    ...
+  }
+  exports.down = function(next) {
+    ...
+  }
+  exports.after = function(done) {
+    ...
+  }
+```
 
 ## TODO
 
