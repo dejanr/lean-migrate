@@ -1,5 +1,5 @@
 {
-  "name": "migrate",
+  "name": "lean-migrate",
   "version": "1.0.0",
   "description": "Simple tool for migrating mysql schema.",
   "main": "bin/migrate.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GAWMiners/migrate.git"
+    "url": "https://github.com/dejanr/lean-migrate.git"
   },
   "author": "Dejan Ranisavljevic <dejan.ranisavljevic@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GAWMiners/migrate/issues"
+    "url": "https://github.com/dejanr/lean-migrate/issues"
   },
-  "homepage": "https://github.com/GAWMiners/migrate",
+  "homepage": "https://github.com/lean-dejanr/migrate",
   "dependencies": {
     "core-util-is": "~1.0.1",
     "dotenv": "~0.4.0",
